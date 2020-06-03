@@ -14,6 +14,8 @@ namespace Model
     public class RequestProduct
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public int RequestId { get; set; }
         [DataMember]
         public int ProductId { get; set; }
