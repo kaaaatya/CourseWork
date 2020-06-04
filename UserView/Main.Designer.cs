@@ -28,13 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.buttonRequests = new System.Windows.Forms.Button();
+            this.buttonProviders = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // buttonRequests
+            // 
+            this.buttonRequests.Location = new System.Drawing.Point(13, 13);
+            this.buttonRequests.Name = "buttonRequests";
+            this.buttonRequests.Size = new System.Drawing.Size(204, 23);
+            this.buttonRequests.TabIndex = 0;
+            this.buttonRequests.Text = "Список заявок";
+            this.buttonRequests.UseVisualStyleBackColor = true;
+            // 
+            // buttonProviders
+            // 
+            this.buttonProviders.Location = new System.Drawing.Point(13, 42);
+            this.buttonProviders.Name = "buttonProviders";
+            this.buttonProviders.Size = new System.Drawing.Size(204, 23);
+            this.buttonProviders.TabIndex = 1;
+            this.buttonProviders.Text = "Список поставщиков";
+            this.buttonProviders.UseVisualStyleBackColor = true;
+            // 
+            // Main
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(231, 79);
+            this.Controls.Add(this.buttonProviders);
+            this.Controls.Add(this.buttonRequests);
+            this.Name = "Main";
+            this.Text = "Главное меню";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonRequests;
+        private System.Windows.Forms.Button buttonProviders;
     }
 }
 
