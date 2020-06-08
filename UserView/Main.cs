@@ -1,20 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Unity;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace UserView
 {
-    public partial class Main : Form
+    public partial class Main : MaterialForm
     {
+        [Dependency]
+        public new IUnityContainer Container { get; set; }
         public Main()
         {
             InitializeComponent();
+            // Create a material theme manager and add the form to manage (this)
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+
+            // Configure color schema
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Blue400, Primary.Blue500,
+                Primary.Blue500, Accent.LightBlue200,
+                TextShade.WHITE
+            );
+        }  
+
+        private void materialButtonProviders_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<Providers>();
+            this.Visible = false;
+            form.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void materialButtonRequests_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<Requests>();
+            this.Visible = false;
+            form.ShowDialog();
+            this.Visible = true;
         }
     }
 }

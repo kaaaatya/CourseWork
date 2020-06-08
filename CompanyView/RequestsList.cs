@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserView
+namespace CompanyView
 {
-    public partial class Request : Form
+    public partial class RequestsList : Form
     {
-        public Request()
+        public RequestsList()
         {
             InitializeComponent();
         }

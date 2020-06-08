@@ -9,7 +9,7 @@ namespace Model
 {
     public class CourseWorkDbContext : DbContext
     {
-        public CourseWorkDbContext() : base("CourseWorkDbContext")
+        public CourseWorkDbContext() : base("name=CourseWorkDbContext")
         {
             //настройки конфигурации для entity
             Configuration.ProxyCreationEnabled = false;

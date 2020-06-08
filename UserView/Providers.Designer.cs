@@ -28,48 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonRate = new System.Windows.Forms.Button();
+            this.materialButtonRate = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Список поставщиков:";
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 64);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(529, 246);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(556, 212);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // buttonRate
+            // materialButtonRate
             // 
-            this.buttonRate.Location = new System.Drawing.Point(537, 30);
-            this.buttonRate.Name = "buttonRate";
-            this.buttonRate.Size = new System.Drawing.Size(234, 23);
-            this.buttonRate.TabIndex = 2;
-            this.buttonRate.Text = "Оценить поставщика";
-            this.buttonRate.UseVisualStyleBackColor = true;
+            this.materialButtonRate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButtonRate.Depth = 0;
+            this.materialButtonRate.DrawShadows = true;
+            this.materialButtonRate.HighEmphasis = true;
+            this.materialButtonRate.Icon = null;
+            this.materialButtonRate.Location = new System.Drawing.Point(570, 80);
+            this.materialButtonRate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButtonRate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButtonRate.Name = "materialButtonRate";
+            this.materialButtonRate.Size = new System.Drawing.Size(196, 36);
+            this.materialButtonRate.TabIndex = 3;
+            this.materialButtonRate.Text = "Оценить поставщика";
+            this.materialButtonRate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButtonRate.UseAccentColor = false;
+            this.materialButtonRate.UseVisualStyleBackColor = true;
+            this.materialButtonRate.Click += new System.EventHandler(this.materialButtonRate_Click);
             // 
             // Providers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 277);
-            this.Controls.Add(this.buttonRate);
+            this.ClientSize = new System.Drawing.Size(779, 277);
+            this.Controls.Add(this.materialButtonRate);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
             this.Name = "Providers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поставщики";
+            this.Load += new System.EventHandler(this.Providers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -77,9 +82,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonRate;
+        private MaterialSkin.Controls.MaterialButton materialButtonRate;
     }
 }
