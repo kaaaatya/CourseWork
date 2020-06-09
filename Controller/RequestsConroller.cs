@@ -31,7 +31,6 @@ namespace Controller
             })
             .ToList();
             return result;
-
         }
 
         public void AddElement(Request model)
@@ -93,6 +92,22 @@ namespace Controller
                     throw;
                 }
             }
+        }
+
+        public List<RequestProductViewModel> GetDetails(int recId)
+        {
+            List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.RequestId == recId).Select(rec => new
+           RequestProductViewModel
+            {
+                Id = rec.Id,
+                RequestId = rec.RequestId,
+                ProductId = rec.ProductId,
+                Status = rec.Status,
+                Amount = rec.Amount,
+                ProviderId = rec.ProviderId
+            })
+            .ToList();
+            return result;
         }
     }
 

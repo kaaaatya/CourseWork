@@ -74,6 +74,18 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProvidersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvidersList.Designer.cs">
+      <DependentUpon>ProvidersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RateProvider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RateProvider.Designer.cs">
+      <DependentUpon>RateProvider.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,12 +94,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProvidersList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProvidersList.Designer.cs">
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvidersList.resx">
       <DependentUpon>ProvidersList.cs</DependentUpon>
-    </Compile>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RateProvider.resx">
+      <DependentUpon>RateProvider.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RequestsList.resx">
       <DependentUpon>RequestsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +137,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{70f6735c-8f75-415d-9540-350a2a747e18}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserView\UserView.csproj">
+      <Project>{0D22E825-3A50-482D-A488-B35FAFF24497}</Project>
+      <Name>UserView</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

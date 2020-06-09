@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.materialButtonNew = new MaterialSkin.Controls.MaterialButton();
+            this.materialButtonGot = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,8 +50,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 62);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(491, 256);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // materialButtonNew
             // 
@@ -71,11 +74,31 @@
             this.materialButtonNew.UseVisualStyleBackColor = true;
             this.materialButtonNew.Click += new System.EventHandler(this.materialButtonNew_Click);
             // 
+            // materialButtonGot
+            // 
+            this.materialButtonGot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButtonGot.Depth = 0;
+            this.materialButtonGot.DrawShadows = true;
+            this.materialButtonGot.HighEmphasis = true;
+            this.materialButtonGot.Icon = null;
+            this.materialButtonGot.Location = new System.Drawing.Point(498, 123);
+            this.materialButtonGot.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButtonGot.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButtonGot.Name = "materialButtonGot";
+            this.materialButtonGot.Size = new System.Drawing.Size(225, 36);
+            this.materialButtonGot.TabIndex = 3;
+            this.materialButtonGot.Text = "         Подробности заявки         ";
+            this.materialButtonGot.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButtonGot.UseAccentColor = false;
+            this.materialButtonGot.UseVisualStyleBackColor = true;
+            this.materialButtonGot.Click += new System.EventHandler(this.materialButtonGot_Click);
+            // 
             // Requests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 317);
+            this.Controls.Add(this.materialButtonGot);
             this.Controls.Add(this.materialButtonNew);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Requests";
@@ -92,5 +115,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialButton materialButtonNew;
+        private MaterialSkin.Controls.MaterialButton materialButtonGot;
     }
 }

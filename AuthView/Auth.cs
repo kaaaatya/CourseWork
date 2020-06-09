@@ -56,7 +56,7 @@ namespace AuthView
                 else if (res == "Исполнитель")
                 {
                     this.Visible = false;
-                    var form1 = Container.Resolve<CompanyView.RequestsList>();
+                    var form1 = Container.Resolve<CompanyView.Main>();
                     form1.ShowDialog();
                     this.Visible = true;
                 }

@@ -15,6 +15,7 @@ namespace UserView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly RequestsConroller service;
+        public static string recId;
         public Requests(RequestsConroller service)
         {
             InitializeComponent();
@@ -31,17 +32,15 @@ namespace UserView
                 TextShade.WHITE
             );
         }
-
-        private void Requests_Load(object sender, EventArgs e)
+        public void LoadRequests()
         {
-            this.Opacity = .9;
             DataGridController dataGrid = new DataGridController();
             dataGrid.design(dataGridView1);
             try
             {
                 List<RequestViewModel> list = service.GetList();
                 if (list != null)
-                {                    
+                {
                     dataGridView1.DataSource = list;
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[5].Visible = false;
@@ -60,6 +59,12 @@ namespace UserView
             }
         }
 
+        private void Requests_Load(object sender, EventArgs e)
+        {
+            this.Opacity = .9;
+            LoadRequests();
+        }
+
 
         private void materialButtonNew_Click(object sender, EventArgs e)
         {
@@ -67,6 +72,30 @@ namespace UserView
             this.Visible = false;
             form.ShowDialog();
             this.Visible = true;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //выбрана строка CurrentRow
+            int CurrentRow = dataGridView1.SelectedCells[0].RowIndex;
+            //получить значение выбранной строки
+            recId = dataGridView1[0, CurrentRow].Value.ToString();
+        }
+
+        private void materialButtonGot_Click(object sender, EventArgs e)
+        {
+            if ((recId != null) && (recId != ""))
+            {
+                var form = Container.Resolve<RequestDetails>();
+                this.Visible = false;
+                form.ShowDialog();
+                this.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Выберите заявку из списка", "Ошибка", MessageBoxButtons.OK,
+              MessageBoxIcon.Error);
+            }
         }
     }
 }

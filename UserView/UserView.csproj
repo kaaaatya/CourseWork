@@ -88,6 +88,12 @@
     <Compile Include="RateProvider.Designer.cs">
       <DependentUpon>RateProvider.cs</DependentUpon>
     </Compile>
+    <Compile Include="RequestDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestDetails.Designer.cs">
+      <DependentUpon>RequestDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RateProvider.resx">
       <DependentUpon>RateProvider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestDetails.resx">
+      <DependentUpon>RequestDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RequestForm.resx">
       <DependentUpon>RequestForm.cs</DependentUpon>

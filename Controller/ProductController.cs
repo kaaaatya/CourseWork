@@ -34,5 +34,12 @@ namespace Controller
             int result = element.Id;
             return result;
         }
+
+        public string ProductNameById(int productId)
+        {
+            Product element = context.Products.FirstOrDefault(rec => rec.Id == productId);
+            string name = element.ProductName;
+            return name;
+        }
     }
 }

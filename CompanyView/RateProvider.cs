@@ -11,8 +11,9 @@ using Controller;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Unity;
+using UserView;
 
-namespace UserView
+namespace CompanyView
 {
     public partial class RateProvider : MaterialForm
     {
@@ -37,15 +38,9 @@ namespace UserView
             );
         }
 
-        private void RateProvider_Load(object sender, EventArgs e)
-        {
-            this.Opacity = .9;
-            label1.Text = service.ProviderNameById(Convert.ToInt32(Providers.providerId));
-        }
-
         private void materialButtonRate_Click(object sender, EventArgs e)
         {
-            int providerId = Convert.ToInt32(Providers.providerId);
+            int providerId = Convert.ToInt32(ProvidersList.providerId);
             if (radioButton1.Checked)
             {
                 service.rateProvider(providerId, 1);
@@ -53,7 +48,8 @@ namespace UserView
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
-            } else if (radioButton2.Checked)
+            }
+            else if (radioButton2.Checked)
             {
                 service.rateProvider(providerId, 2);
                 MessageBox.Show("Оценка успешно выставлена", "Сообщение",
@@ -90,8 +86,12 @@ namespace UserView
                 MessageBox.Show("Выберите оценку поставщику", "Ошибка", MessageBoxButtons.OK,
               MessageBoxIcon.Error);
             }
-
         }
 
+        private void RateProvider_Load(object sender, EventArgs e)
+        {
+            this.Opacity = .9;
+            label1.Text = service.ProviderNameById(Convert.ToInt32(ProvidersList.providerId));
+        }
     }
 }
