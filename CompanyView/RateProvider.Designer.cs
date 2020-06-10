@@ -133,6 +133,7 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label1);
             this.Name = "RateProvider";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оцените поставщика";
             this.Load += new System.EventHandler(this.RateProvider_Load);
             this.ResumeLayout(false);

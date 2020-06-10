@@ -72,6 +72,7 @@
             this.Controls.Add(this.materialButtonRate);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ProvidersList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список поставщиков";
             this.Load += new System.EventHandler(this.ProvidersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

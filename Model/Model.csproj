@@ -53,9 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseWorkDbContext.cs" />
-    <Compile Include="Migrations\202006080539482_FirstMigration.cs" />
-    <Compile Include="Migrations\202006080539482_FirstMigration.designer.cs">
-      <DependentUpon>202006080539482_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202006101302337_firstMigration.cs" />
+    <Compile Include="Migrations\202006101302337_firstMigration.designer.cs">
+      <DependentUpon>202006101302337_firstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
@@ -77,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006080539482_FirstMigration.resx">
-      <DependentUpon>202006080539482_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006101302337_firstMigration.resx">
+      <DependentUpon>202006101302337_firstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

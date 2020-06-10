@@ -101,7 +101,6 @@ namespace UserView
                         {
                             Date = dateTimePicker1.Value,
                             Address = comboBoxAddress.Text.ToString(),
-                            Feedback = null,
                             ReceiptMark = false,
                             UserId = AuthController.authId
 

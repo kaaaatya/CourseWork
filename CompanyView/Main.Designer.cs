@@ -78,6 +78,7 @@
             this.Controls.Add(this.materialButtonRequests);
             this.Controls.Add(this.materialButtonProviders);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);

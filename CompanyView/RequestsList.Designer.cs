@@ -29,69 +29,48 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.materialButtonUnclassified = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 40);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 64);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(502, 243);
+            this.dataGridView1.Size = new System.Drawing.Size(502, 219);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // materialButtonUnclassified
             // 
-            this.button1.Location = new System.Drawing.Point(509, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Нераспределенные заявки";
-            this.button1.UseVisualStyleBackColor = true;
+            this.materialButtonUnclassified.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButtonUnclassified.Depth = 0;
+            this.materialButtonUnclassified.DrawShadows = true;
+            this.materialButtonUnclassified.HighEmphasis = true;
+            this.materialButtonUnclassified.Icon = null;
+            this.materialButtonUnclassified.Location = new System.Drawing.Point(509, 75);
+            this.materialButtonUnclassified.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButtonUnclassified.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButtonUnclassified.Name = "materialButtonUnclassified";
+            this.materialButtonUnclassified.Size = new System.Drawing.Size(241, 36);
+            this.materialButtonUnclassified.TabIndex = 4;
+            this.materialButtonUnclassified.Text = "                            Детали заявок                             ";
+            this.materialButtonUnclassified.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButtonUnclassified.UseAccentColor = false;
+            this.materialButtonUnclassified.UseVisualStyleBackColor = true;
+            this.materialButtonUnclassified.Click += new System.EventHandler(this.materialButtonUnclassified_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(509, 70);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Распределить по поставщикам";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(509, 100);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Сформировать маршрут поставок";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // Main
+            // RequestsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 283);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(759, 283);
+            this.Controls.Add(this.materialButtonUnclassified);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Main";
+            this.Name = "RequestsList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список заявок";
+            this.Load += new System.EventHandler(this.RequestsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,10 +80,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
+        private MaterialSkin.Controls.MaterialButton materialButtonUnclassified;
     }
 }
 

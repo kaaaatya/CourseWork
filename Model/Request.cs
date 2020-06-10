@@ -21,8 +21,6 @@ namespace Model
         [DataMember]
         public string Address { get; set; }
         [DataMember]
-        public string Feedback { get; set; }
-        [DataMember]
         public bool ReceiptMark { get; set; }
         [DataMember]
         public int UserId { get; set; }

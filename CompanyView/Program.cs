@@ -16,7 +16,7 @@ namespace CompanyView
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RequestsList());
+            Application.Run(new Main());
         }
     }
 }

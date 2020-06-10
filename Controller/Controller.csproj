@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -55,6 +56,7 @@
   <ItemGroup>
     <Compile Include="AuthController.cs" />
     <Compile Include="DataGridController.cs" />
+    <Compile Include="EmailController.cs" />
     <Compile Include="EncryptionController.cs" />
     <Compile Include="ProductController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

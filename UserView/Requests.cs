@@ -71,6 +71,7 @@ namespace UserView
             var form = Container.Resolve<RequestForm>();
             this.Visible = false;
             form.ShowDialog();
+            LoadRequests();
             this.Visible = true;
         }
 
@@ -90,6 +91,20 @@ namespace UserView
                 this.Visible = false;
                 form.ShowDialog();
                 this.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Выберите заявку из списка", "Ошибка", MessageBoxButtons.OK,
+              MessageBoxIcon.Error);
+            }
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            if ((recId != null) && (recId != ""))
+            {
+                service.finishOrder(Convert.ToInt32(recId));
+                LoadRequests();
             }
             else
             {
