@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{F8D3BFA6-60C4-4011-ABC3-BD66D9B655E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthView", "AuthView\AuthView.csproj", "{A15E3DA9-22D9-4313-A4D1-3C45AFFA8BCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseLogistics", "AuthView\WarehouseLogistics.csproj", "{A15E3DA9-22D9-4313-A4D1-3C45AFFA8BCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyView", "CompanyView\CompanyView.csproj", "{E67EE938-949D-4DF0-AE00-E160958C9F76}"
 EndProject

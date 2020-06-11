@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A15E3DA9-22D9-4313-A4D1-3C45AFFA8BCF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AuthView</RootNamespace>
-    <AssemblyName>AuthView</AssemblyName>
+    <RootNamespace>WarehouseLogistics</RootNamespace>
+    <AssemblyName>WarehouseLogistics</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -93,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>

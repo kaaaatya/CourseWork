@@ -43,11 +43,10 @@ namespace UserView
                 {
                     dataGridView1.DataSource = list;
                     dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[5].Visible = false;
+                    dataGridView1.Columns[4].Visible = false;
                     dataGridView1.Columns[1].HeaderText = "Дата поставки";
                     dataGridView1.Columns[2].HeaderText = "Адрес поставки";
-                    dataGridView1.Columns[3].HeaderText = "Отзыв";
-                    dataGridView1.Columns[4].HeaderText = "Отметка получения";
+                    dataGridView1.Columns[3].HeaderText = "Отметка получения";
                     dataGridView1.Columns[1].AutoSizeMode =
                         DataGridViewAutoSizeColumnMode.Fill;
                 }

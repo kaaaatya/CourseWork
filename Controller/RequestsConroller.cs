@@ -221,6 +221,9 @@ namespace Controller
             Request element = context.Requests.FirstOrDefault(rec => rec.Id == recId);
             element.ReceiptMark = true;
             context.SaveChanges();
+            RequestProduct element1 = getById(element.Id);
+            element1.Status = "Завершен";
+            context.SaveChanges();
             int user = getUserIdForRequest(recId);
             string address = findEmail(user);
             email.SendEmail(address, "Завершение заказа", "Доставка заказа № " + recId + " выполнена");
