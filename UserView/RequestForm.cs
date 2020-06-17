@@ -95,29 +95,41 @@ namespace UserView
             {
                 if (DateTime.Today.AddDays(7) < dateTimePicker1.Value)
                 {
-                    try
+                    if (comboBox1.SelectedIndex != -1)
                     {
-                        recService.AddElement(new Request
+                        try
                         {
-                            Date = dateTimePicker1.Value,
-                            Address = comboBoxAddress.Text.ToString(),
-                            ReceiptMark = false,
-                            UserId = AuthController.authId
+                            recService.AddElement(new Request
+                            {
+                                Date = dateTimePicker1.Value,
+                                Address = comboBoxAddress.Text.ToString(),
+                                ReceiptMark = false,
+                                UserId = AuthController.authId,
+                                DateReception = null,
+                                Prioritet = comboBox1.SelectedIndex
 
-                        });
-                        recDate = dateTimePicker1.Value;
-                        MessageBox.Show("Заявка успешно добавлена", "Сообщение",
-                       MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DialogResult = DialogResult.OK;
-                        Close();                        
+                            });
+                            recDate = dateTimePicker1.Value;
+                            MessageBox.Show("Заявка успешно добавлена", "Сообщение",
+                           MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult = DialogResult.OK;
+                            Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                           MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            prodList();
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-                    }
-                    finally{
-                        prodList();
+                        MessageBox.Show("Выберите приоритет выбора поставщика", "Ошибка", MessageBoxButtons.OK,
+              MessageBoxIcon.Error);
+                        return;
                     }
                 }
                 else

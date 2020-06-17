@@ -32,12 +32,15 @@ namespace Controller
                 Date = rec.Date,
                 Address = rec.Address,
                 ReceiptMark = rec.ReceiptMark,
+                DateReception = rec.DateReception,
+                Prioritet = rec.Prioritet,
                 UserId = rec.UserId
             })
             .ToList();
             return result;
         }
 
+        // полный список заявок
         public List<RequestViewModel> GetFullList()
         {
             List<RequestViewModel> result = context.Requests.Select(rec => new
@@ -47,12 +50,15 @@ namespace Controller
                 Date = rec.Date,
                 Address = rec.Address,
                 ReceiptMark = rec.ReceiptMark,
+                DateReception = rec.DateReception,
+                Prioritet = rec.Prioritet,
                 UserId = rec.UserId
             })
             .ToList();
             return result;
         }
 
+        // добавление новой заявки
         public void AddElement(Request model)
         {
             using (var transaction = context.Database.BeginTransaction())
@@ -65,6 +71,8 @@ namespace Controller
                         Date = model.Date,
                         Address = model.Address,
                         ReceiptMark = false,
+                        DateReception = null,
+                        Prioritet = model.Prioritet,
                         UserId = AuthController.authId
                     };
                     context.Requests.Add(element);
@@ -82,6 +90,7 @@ namespace Controller
             }
         }
 
+        // поиск адреса почты клиента
         public string findEmail(int userId)
         {
             User element = context.Users.FirstOrDefault(rec => rec.Id == userId);
@@ -89,6 +98,7 @@ namespace Controller
             return result;
         }
 
+        // поиск заявки по id 
         public int recId(DateTime dateRec)
         {
             Request element = context.Requests.FirstOrDefault(rec => rec.Date == dateRec);
@@ -96,6 +106,7 @@ namespace Controller
             return result;
         }
 
+        // добавление товаров в заявку
         public void addProdToRequest(RequestProduct model)
         {
             using (var transaction = context.Database.BeginTransaction())
@@ -123,6 +134,7 @@ namespace Controller
             }
         }
 
+        // детали заявки (товары в заявке)
         public List<RequestProductViewModel> GetDetails(int recId)
         {
             List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.RequestId == recId).Select(rec => new
@@ -138,6 +150,8 @@ namespace Controller
             .ToList();
             return result;
         }
+
+        // список товаров в каждой заявке (для исполнителя)
         public List<RequestProductViewModel> GetDetailsOnAll()
         {
             List<RequestProductViewModel> result = context.RequestProducts.Select(rec => new
@@ -154,6 +168,7 @@ namespace Controller
             return result;
         }
 
+        // список нераспределенных заявок
         public List<RequestProductViewModel> GetUnclassified()
         {
             List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.ProviderId == 1).Select(rec => new
@@ -170,6 +185,7 @@ namespace Controller
             return result;
         }
 
+        // назначение поставщиков заявкам 
         public List<RequestProductViewModel> FindProviders(){
             List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.ProviderId == 1).Select(rec => new
            RequestProductViewModel
@@ -185,41 +201,59 @@ namespace Controller
 
             for (int i = 0; i < result.Count; i++)
             {
+                int recuestId = result[i].RequestId;
+                Request el = context.Requests.FirstOrDefault(rec => rec.Id == recuestId);
+                int Prioritet = el.Prioritet;
+
                 int prodId = result[i].ProductId;
                 int amount = result[i].Amount;
-                int providerId = FindProvider(prodId, amount);
+                int providerId = 1;
+
+                if (Prioritet == 0)
+                {
+                    providerId = FindProviderWithMinPrice(prodId, amount);
+                } else
+                {
+                    providerId = FindProviderWithBestRating(prodId, amount);
+                }                
                 //result[i].ProviderId = providerId;
                 RequestProduct element = getById(result[i].Id);
                 element.ProviderId = providerId;
                 element.Status = "Заказ передан поставщику";
-                changeInStockAmount(prodId, providerId, amount);
+                decimal totalPrice = changeInStockAmount(prodId, providerId, amount);
                 context.SaveChanges();
                 int user = getUserIdForRequest(result[i].RequestId);
                 string address = findEmail(user);
-                email.SendEmail(address, "Изменение статуса заказа", "Доставка " + productController.ProductNameById(result[i].ProductId) + " передана " + providerController.ProviderNameById(providerId));
+                email.SendEmail(address, "Изменение статуса заказа", "Доставка " + productController.ProductNameById(result[i].ProductId) + " передана " + providerController.ProviderNameById(providerId) + ". Стоимость доставки составила " + totalPrice);
             }
 
             context.SaveChanges();
             return result;
         }
 
-        public void changeInStockAmount(int prodId, int providerId, int amount)
+        // изм количества товара на складе
+        public decimal changeInStockAmount(int prodId, int providerId, int amount)
         {
             ProviderProduct element = context.ProviderProducts.FirstOrDefault(rec => rec.ProviderId == providerId && rec.ProductId == prodId);
-            element.InStockAmount = element.InStockAmount - amount;
+            element.InStockAmount = element.InStockAmount - amount;            
             context.SaveChanges();
+            decimal totalPrice = element.Price * amount;
+            return totalPrice;
         }
 
+        // получение товаров в заявке по id 
         public RequestProduct getById(int recId)
         {
             RequestProduct element = context.RequestProducts.FirstOrDefault(rec => rec.Id == recId);
             return element;
         }
 
-        public void finishOrder(int recId)
+        // завершение заявки (статус и дата окончания)
+        public void finishOrder(int recId, DateTime reception)
         {
             Request element = context.Requests.FirstOrDefault(rec => rec.Id == recId);
             element.ReceiptMark = true;
+            element.DateReception = reception;
             context.SaveChanges();
             RequestProduct element1 = getById(element.Id);
             element1.Status = "Завершен";
@@ -229,6 +263,7 @@ namespace Controller
             email.SendEmail(address, "Завершение заказа", "Доставка заказа № " + recId + " выполнена");
         }
 
+        // получение id заказчика по заказу
         public int getUserIdForRequest(int recId)
         {
             Request element = context.Requests.FirstOrDefault(rec => rec.Id == recId);
@@ -236,7 +271,8 @@ namespace Controller
             return user;
         }
 
-        public int FindProvider(int productId, int amount)
+        // поиск поставщика с минимальной ценой
+        public int FindProviderWithMinPrice(int productId, int amount)
         {
             List<ProviderProductViewModel> choices = context.ProviderProducts.Where(rec => rec.ProductId == productId && rec.InStockAmount >= amount).Select(rec => new
            ProviderProductViewModel
@@ -272,6 +308,45 @@ namespace Controller
             return result;
         }
 
+
+        public int FindProviderWithBestRating(int productId, int amount)
+        {
+            List<ProviderProductViewModel> choices = context.ProviderProducts.Where(rec => rec.ProductId == productId && rec.InStockAmount >= amount).Select(rec => new
+           ProviderProductViewModel
+            {
+                Id = rec.Id,
+                ProviderId = rec.ProviderId,
+                ProductId = rec.ProductId,
+                Price = rec.Price,
+                InStockAmount = rec.InStockAmount
+            })
+            .ToList();
+            int result = 1;
+            if (choices.Count != 1)
+            {
+                decimal bestRating = 0;
+                for (int i = 0; i < choices.Count; i++)
+                {
+                    int provId = choices[i].ProviderId;
+                    Provider element = context.Providers.FirstOrDefault(rec => rec.Id == provId);
+                    decimal rating = element.Rating;
+                    if (rating > bestRating)
+                    {
+                        bestRating = rating;
+                        result = choices[i].ProviderId;
+                    }
+                }
+            }
+            else if (choices.Count == 1)
+            {
+                result = choices[0].ProviderId;
+            }
+            else if (choices.Count == 0)
+            {
+                result = 1;
+            }
+            return result;
+        }
     }
 
 }

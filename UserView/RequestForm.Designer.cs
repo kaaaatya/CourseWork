@@ -42,6 +42,8 @@
             this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.materialButtonNewRequest = new MaterialSkin.Controls.MaterialButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -70,10 +72,10 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Product,
             this.Amount});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 273);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 332);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(255, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(255, 122);
             this.dataGridView1.TabIndex = 3;
             // 
             // Product
@@ -118,7 +120,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBoxAmount);
             this.groupBox1.Controls.Add(this.comboBoxProduct);
-            this.groupBox1.Location = new System.Drawing.Point(12, 131);
+            this.groupBox1.Location = new System.Drawing.Point(12, 190);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(254, 136);
             this.groupBox1.TabIndex = 6;
@@ -184,7 +186,7 @@
             this.materialButtonNewRequest.DrawShadows = true;
             this.materialButtonNewRequest.HighEmphasis = true;
             this.materialButtonNewRequest.Icon = null;
-            this.materialButtonNewRequest.Location = new System.Drawing.Point(12, 440);
+            this.materialButtonNewRequest.Location = new System.Drawing.Point(15, 463);
             this.materialButtonNewRequest.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButtonNewRequest.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButtonNewRequest.Name = "materialButtonNewRequest";
@@ -196,11 +198,33 @@
             this.materialButtonNewRequest.UseVisualStyleBackColor = true;
             this.materialButtonNewRequest.Click += new System.EventHandler(this.materialButtonNewRequest_Click);
             // 
-            // Request
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Цена",
+            "Рейтинг"});
+            this.comboBox1.Location = new System.Drawing.Point(67, 152);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 132);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(179, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Приоритет в выборе поставщика:";
+            // 
+            // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 491);
+            this.ClientSize = new System.Drawing.Size(282, 514);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.materialButtonNewRequest);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBoxAddress);
@@ -208,7 +232,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Name = "Request";
+            this.Name = "RequestForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Новая заявка";
             this.Load += new System.EventHandler(this.Request_Load);
@@ -235,5 +259,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private MaterialSkin.Controls.MaterialButton materialButtonAddToRequest;
         private MaterialSkin.Controls.MaterialButton materialButtonNewRequest;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -20,6 +20,10 @@ namespace Model
         [DataMember]
         public bool ReceiptMark { get; set; }
         [DataMember]
+        public DateTime? DateReception { get; set; }
+        [DataMember]
+        public int Prioritet { get; set; }
+        [DataMember]
         public int UserId { get; set; }
         public virtual User User { get; set; }
         [ForeignKey("RequestId")]

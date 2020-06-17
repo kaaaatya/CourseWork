@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class firstMigration : DbMigration
+    public partial class firtsMigration : DbMigration
     {
         public override void Up()
         {
@@ -72,6 +72,8 @@
                         Date = c.DateTime(),
                         Address = c.String(),
                         ReceiptMark = c.Boolean(nullable: false),
+                        DateReception = c.DateTime(),
+                        Prioritet = c.Int(nullable: false),
                         UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
