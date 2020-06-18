@@ -279,8 +279,25 @@ namespace Controller
             element.ReceiptMark = true;
             element.DateReception = reception;
             context.SaveChanges();
-            finished(element.Id);            
-            context.SaveChanges();
+
+            for (int i = 1; i < 6; i++)
+            {
+                try
+                {
+                    RequestProduct elementPr = context.RequestProducts.FirstOrDefault(rec => rec.RequestId == recId && rec.Status == "Заказ передан поставщику");
+                    if (elementPr != null)
+                    {
+                        elementPr.Status = "Завершен";
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+            }           
+
             int user = getUserIdForRequest(recId);
             string address = findEmail(user);
             email.SendEmail(address, "Завершение заказа", "Доставка заказа № " + recId + " выполнена");

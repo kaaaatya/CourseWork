@@ -262,7 +262,15 @@ namespace UserView
                         {
                             dataGridView2.Rows[i].Cells[3].Value = "Не получен";
                         }
-                        dataGridView2.Rows[i].Cells[4].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[5].Value.ToString()) == 0)
+                        {
+                            dataGridView2.Rows[i].Cells[4].Value = "Цена";
+                        }
+                        else
+                        {
+                            dataGridView2.Rows[i].Cells[4].Value = "Рейтинг";
+                        }
+                        
                     }
                     
                 }
