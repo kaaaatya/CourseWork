@@ -186,7 +186,8 @@ namespace Controller
         }
 
         // назначение поставщиков заявкам 
-        public List<RequestProductViewModel> FindProviders(){
+        public List<RequestProductViewModel> FindProviders()
+        {
             List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.ProviderId == 1).Select(rec => new
            RequestProductViewModel
             {
@@ -212,10 +213,11 @@ namespace Controller
                 if (Prioritet == 0)
                 {
                     providerId = FindProviderWithMinPrice(prodId, amount);
-                } else
+                }
+                else
                 {
                     providerId = FindProviderWithBestRating(prodId, amount);
-                }                
+                }
                 //result[i].ProviderId = providerId;
                 RequestProduct element = getById(result[i].Id);
                 element.ProviderId = providerId;
@@ -248,6 +250,28 @@ namespace Controller
             return element;
         }
 
+        public void finished(int recId)
+        {
+            List<RequestProductViewModel> result = context.RequestProducts.Where(rec => rec.Id == recId).Select(rec => new
+           RequestProductViewModel
+            {
+                Id = rec.Id,
+                RequestId = rec.RequestId,
+                ProductId = rec.ProductId,
+                Status = rec.Status,
+                Amount = rec.Amount,
+                ProviderId = rec.ProviderId
+            })
+            .ToList();
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                result[i].Status = "Завершен";
+                context.SaveChanges();
+            }
+
+        }
+
         // завершение заявки (статус и дата окончания)
         public void finishOrder(int recId, DateTime reception)
         {
@@ -255,8 +279,7 @@ namespace Controller
             element.ReceiptMark = true;
             element.DateReception = reception;
             context.SaveChanges();
-            RequestProduct element1 = getById(element.Id);
-            element1.Status = "Завершен";
+            finished(element.Id);            
             context.SaveChanges();
             int user = getUserIdForRequest(recId);
             string address = findEmail(user);

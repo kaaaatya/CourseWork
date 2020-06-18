@@ -229,6 +229,10 @@ namespace UserView
 
         private void materialButtonExcel_Click(object sender, EventArgs e)
         {
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+
+
             if (dateTimePicker3.Value > dateTimePicker2.Value)
             {
                 dataGridView2.Rows.Clear();
@@ -289,6 +293,16 @@ namespace UserView
                        MessageBoxIcon.Error);
                     }
                 }
+
+                label1.Visible = false;
+                materialButtonDateReception.Visible = false;
+                dateTimePicker1.Visible = false;
+                dataGridView1.Visible = true;
+
+                label2.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
+                materialButtonExcel.Visible = false;
             }
             else
             {

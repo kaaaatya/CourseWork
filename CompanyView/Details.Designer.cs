@@ -35,8 +35,11 @@
             this.materialButtonUnclassified = new MaterialSkin.Controls.MaterialButton();
             this.materialButtonClassify = new MaterialSkin.Controls.MaterialButton();
             this.materialButtonCancel = new MaterialSkin.Controls.MaterialButton();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.materialButtonPDF = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView2
@@ -133,22 +136,56 @@
             this.materialButtonCancel.UseVisualStyleBackColor = true;
             this.materialButtonCancel.Click += new System.EventHandler(this.materialButtonCancel_Click);
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(0, 64);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.Size = new System.Drawing.Size(606, 243);
+            this.dataGridView3.TabIndex = 8;
+            this.dataGridView3.Visible = false;
+            // 
+            // materialButtonPDF
+            // 
+            this.materialButtonPDF.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButtonPDF.Depth = 0;
+            this.materialButtonPDF.DrawShadows = true;
+            this.materialButtonPDF.HighEmphasis = true;
+            this.materialButtonPDF.Icon = null;
+            this.materialButtonPDF.Location = new System.Drawing.Point(635, 218);
+            this.materialButtonPDF.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButtonPDF.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButtonPDF.Name = "materialButtonPDF";
+            this.materialButtonPDF.Size = new System.Drawing.Size(280, 36);
+            this.materialButtonPDF.TabIndex = 9;
+            this.materialButtonPDF.Text = "             Сформировать отчет (PDF)             ";
+            this.materialButtonPDF.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButtonPDF.UseAccentColor = false;
+            this.materialButtonPDF.UseVisualStyleBackColor = true;
+            this.materialButtonPDF.Click += new System.EventHandler(this.materialButtonPDF_Click);
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 308);
+            this.Controls.Add(this.materialButtonPDF);
             this.Controls.Add(this.materialButtonCancel);
             this.Controls.Add(this.materialButtonClassify);
             this.Controls.Add(this.materialButtonUnclassified);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView3);
             this.Name = "Details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список заявок";
             this.Load += new System.EventHandler(this.Details_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +200,7 @@
         private MaterialSkin.Controls.MaterialButton materialButtonUnclassified;
         private MaterialSkin.Controls.MaterialButton materialButtonClassify;
         private MaterialSkin.Controls.MaterialButton materialButtonCancel;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private MaterialSkin.Controls.MaterialButton materialButtonPDF;
     }
 }
